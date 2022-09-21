@@ -1,6 +1,8 @@
 package models
 
 import (
+	"fmt"
+
 	"github.com/jinzhu/gorm"
 	"github.com/smith-golang/go-bookstore/pkg/config"
 )
@@ -35,6 +37,7 @@ func GetBook() []Book {
 func GetBookById(Id int64) (*Book, *gorm.DB) {
 	var GetBook Book
 	db := db.Where("ID=?", Id).Find(&GetBook)
+	fmt.Println(GetBook, db.Error)
 	return &GetBook, db
 }
 
